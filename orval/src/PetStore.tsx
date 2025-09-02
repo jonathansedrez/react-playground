@@ -1,21 +1,25 @@
 import React, { useEffect, useState } from "react";
 import type { Pet } from "./api/petstore";
+import { listPets } from "./api/petstore";
 
 const PetStore: React.FC = () => {
   const [pets, setPets] = useState<Pet[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const listPets = async (limit: number) => {
-      const response = await fetch(`/api/petstore?limit=${limit}`);
-      if (response.ok) {
-        const data = await response.json();
-        setPets(data);
+    const fetch = async () => {
+      try {
+        const response = await listPets();
+        setPets(response.data);
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
-    listPets(25);
+    fetch();
   }, []);
 
   if (loading) return <div>Loading...</div>;
