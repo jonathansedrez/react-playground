@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import type { Pet } from "./api/petstore";
-import { listPets } from "./api/petstore";
+import { getPets } from "./api/petstore";
 
 const PetStore: React.FC = () => {
   const [pets, setPets] = useState<Pet[]>([]);
@@ -9,7 +9,7 @@ const PetStore: React.FC = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await listPets();
+        const response = await getPets();
         setPets(response.data);
         console.log(response);
       } catch (error) {
