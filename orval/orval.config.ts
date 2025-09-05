@@ -6,6 +6,7 @@ export default defineConfig({
     output: {
       target: "./src/api/petstore.ts",
       baseUrl: "http://localhost:4000",
+      mock: true,
     },
   },
 });

@@ -11,6 +11,16 @@ import type {
   AxiosResponse
 } from 'axios';
 
+import {
+  faker
+} from '@faker-js/faker';
+
+import {
+  HttpResponse,
+  delay,
+  http
+} from 'msw';
+
 export interface Pet {
   id?: number;
   name?: string;
@@ -31,3 +41,21 @@ export const getPets = <TData = AxiosResponse<Pet[]>>(
   }
 
 export type GetPetsResult = AxiosResponse<Pet[]>
+
+
+export const getGetPetsResponseMock = (): Pet[] => (Array.from({ length: faker.number.int({ min: 1, max: 10 }) }, (_, i) => i + 1).map(() => ({id: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined]), name: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), type: faker.helpers.arrayElement([faker.string.alpha({length: {min: 10, max: 20}}), undefined]), age: faker.helpers.arrayElement([faker.number.int({min: undefined, max: undefined}), undefined])})))
+
+
+export const getGetPetsMockHandler = (overrideResponse?: Pet[] | ((info: Parameters<Parameters<typeof http.get>[1]>[0]) => Promise<Pet[]> | Pet[])) => {
+  return http.get('*/pets', async (info) => {await delay(1000);
+  
+    return new HttpResponse(JSON.stringify(overrideResponse !== undefined
+    ? (typeof overrideResponse === "function" ? await overrideResponse(info) : overrideResponse)
+    : getGetPetsResponseMock()),
+      { status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      })
+  })
+}
+export const getPetstoreAPIJSONServerMock = () => [
+  getGetPetsMockHandler()]
