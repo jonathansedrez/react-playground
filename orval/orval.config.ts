@@ -5,12 +5,7 @@ export default defineConfig({
     input: "./src/api/petstore.yaml",
     output: {
       target: "./src/api/petstore.ts",
-      baseUrl: {
-        getBaseUrlFromSpecification: true,
-        variables: {
-          environment: "api.dev",
-        },
-      },
+      baseUrl: "http://localhost:4000",
     },
   },
 });

@@ -26,7 +26,7 @@ export const getPets = <TData = AxiosResponse<Pet[]>>(
      options?: AxiosRequestConfig
  ): Promise<TData> => {
     return axios.default.get(
-      `/pets`,options
+      `http://localhost:4000/pets`,options
     );
   }
 
