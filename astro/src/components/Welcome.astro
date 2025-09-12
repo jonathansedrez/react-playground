@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import astroLogo from "../assets/astro.svg";
 import background from "../assets/background.svg";
 ---
@@ -6,6 +7,12 @@ import background from "../assets/background.svg";
 <div id="container">
   <img id="background" src={background.src} alt="" fetchpriority="high" />
   <main>
+    <Image
+      src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/fbc430126219885.6128ceaac2351.png"
+      alt="A bird."
+      inferSize
+    />
+
     <section id="hero">
       <a href="https://astro.build"
         ><img
