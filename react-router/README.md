@@ -1,3 +1,8 @@
+# Learnings
+
+- You can choose between ssr true or false;
+- 
+
 # Welcome to React Router!
 
 A modern, production-ready template for building full-stack React applications using React Router.
