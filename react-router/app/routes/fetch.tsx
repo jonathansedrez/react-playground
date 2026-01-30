@@ -1,11 +1,24 @@
-import React from "react";
+import type { Route } from "./+types/fetch";
 
-const Fetch = () => {
+export async function clientLoader() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
+  const user = await response.json();
+  return { user };
+}
+
+export default function Fetch({ loaderData }: Route.ComponentProps) {
   return (
     <div>
-      <p>I'll fetch something</p>
+      <h2>Fetched User Data</h2>
+      <p>
+        <strong>Name:</strong> {loaderData.user.name}
+      </p>
+      <p>
+        <strong>Email:</strong> {loaderData.user.email}
+      </p>
+      <p>
+        <strong>Company:</strong> {loaderData.user.company.name}
+      </p>
     </div>
   );
-};
-
-export default Fetch;
+}
