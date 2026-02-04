@@ -2,7 +2,7 @@
 
 - [x] laoder data
 - [x] revalidator
-- [ ] Using Deferred Data
+- [x] Using Deferred Data
 
 # Learnings
 
@@ -13,6 +13,7 @@
   | Only in route component | Works in any nested component |
   | Auto-typed with `Route.ComponentProps` | Needs `<typeof clientLoader>` generic |
   | Slightly more explicit | Useful for deeply nested components |
+- `defer` is automatically handle from react-router v6 to v7. It automatically identify if it is a Promise and defer it.
 
 # Welcome to React Router!
 
