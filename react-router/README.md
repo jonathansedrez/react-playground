@@ -1,7 +1,18 @@
+# Features to validate
+
+- [x] laoder data
+- [x] revalidator
+- [ ] Using Deferred Data
+
 # Learnings
 
 - You can choose between ssr true or false;
-- 
+- loader props vs custom hook
+  | Props (`loaderData`) | Hook (`useLoaderData`) |
+  | -------------------------------------- | ------------------------------------- |
+  | Only in route component | Works in any nested component |
+  | Auto-typed with `Route.ComponentProps` | Needs `<typeof clientLoader>` generic |
+  | Slightly more explicit | Useful for deeply nested components |
 
 # Welcome to React Router!
 
