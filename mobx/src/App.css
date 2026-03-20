@@ -10,7 +10,6 @@
 
 .todo-app h1 {
   margin-bottom: 1.5rem;
-  color: #646cff;
 }
 
 .todo-form {
@@ -23,15 +22,14 @@
   flex: 1;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  border: 1px solid #444;
+  border: 1px solid #888;
   border-radius: 8px;
-  background: #1a1a1a;
   color: inherit;
 }
 
 .todo-input:focus {
   outline: none;
-  border-color: #646cff;
+  border-color: white;
 }
 
 .add-btn {
@@ -39,14 +37,14 @@
   font-size: 1rem;
   border-radius: 8px;
   border: none;
-  background: #646cff;
+  background: black;
   color: white;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .add-btn:hover {
-  background: #535bf2;
+  background: #333;
 }
 
 .todo-list {
@@ -61,9 +59,8 @@
   gap: 0.75rem;
   padding: 0.75rem 1rem;
   margin-bottom: 0.5rem;
-  background: #1a1a1a;
   border-radius: 8px;
-  border: 1px solid #333;
+  border: 1px solid #888;
 }
 
 .todo-item.completed .todo-text {
@@ -75,7 +72,7 @@
   width: 1.2rem;
   height: 1.2rem;
   cursor: pointer;
-  accent-color: #646cff;
+  accent-color: white;
 }
 
 .todo-text {
@@ -88,14 +85,14 @@
   font-size: 0.85rem;
   border-radius: 6px;
   border: none;
-  background: #ff4444;
+  background: black;
   color: white;
   cursor: pointer;
   transition: background 0.2s;
 }
 
 .delete-btn:hover {
-  background: #cc3333;
+  background: #333;
 }
 
 .todo-stats {
@@ -104,7 +101,42 @@
   gap: 2rem;
   margin-top: 1.5rem;
   padding: 1rem;
-  background: #1a1a1a;
   border-radius: 8px;
-  color: #888;
+  color: #ccc;
+}
+
+/* WebSocket Controls */
+.ws-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #888;
+  font-size: 0.9rem;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-dot.connected {
+  background: white;
+  box-shadow: 0 0 6px white;
+}
+
+.status-dot.disconnected {
+  background: #555;
+}
+
+.ws-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
 }

@@ -16,6 +16,28 @@ const App = observer(() => {
     <div className="todo-app">
       <h1>MobX Todo List</h1>
 
+      <div className="ws-controls">
+        <span
+          className={`status-dot ${todoStore.wsConnected ? "connected" : "disconnected"}`}
+        />
+        <span>{todoStore.wsConnected ? "Connected" : "Disconnected"}</span>
+        {todoStore.wsConnected ? (
+          <button
+            onClick={() => todoStore.disconnect()}
+            className="ws-btn disconnect"
+          >
+            Disconnect
+          </button>
+        ) : (
+          <button
+            onClick={() => todoStore.connect("ws://localhost:8080")}
+            className="ws-btn connect"
+          >
+            Connect
+          </button>
+        )}
+      </div>
+
       <form onSubmit={handleSubmit} className="todo-form">
         <input
           type="text"
@@ -31,7 +53,10 @@ const App = observer(() => {
 
       <ul className="todo-list">
         {todoStore.todos.map((todo) => (
-          <li key={todo.id} className={`todo-item ${todo.completed ? "completed" : ""}`}>
+          <li
+            key={todo.id}
+            className={`todo-item ${todo.completed ? "completed" : ""}`}
+          >
             <input
               type="checkbox"
               checked={todo.completed}
@@ -39,7 +64,10 @@ const App = observer(() => {
               className="todo-checkbox"
             />
             <span className="todo-text">{todo.text}</span>
-            <button onClick={() => todoStore.removeTodo(todo.id)} className="delete-btn">
+            <button
+              onClick={() => todoStore.removeTodo(todo.id)}
+              className="delete-btn"
+            >
               Delete
             </button>
           </li>
